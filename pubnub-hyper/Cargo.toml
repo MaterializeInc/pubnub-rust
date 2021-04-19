@@ -12,7 +12,7 @@ readme = "../README.md"
 license-file = "../LICENSE"
 
 [dependencies]
-pubnub-core = { version = "=0.1.0", path = "../pubnub-core" }
+pubnub-core = { version = "=0.1.0", path = "../pubnub-core", default-features = false }
 pubnub-util = { version = "=0.1.0", path = "../pubnub-util", default-features = false, features = ["uritemplate_api", "pam_signature"] }
 async-trait = "0.1"
 derive_builder = "0.9"
@@ -42,3 +42,7 @@ tokio = { version = "1", features = ["macros", "time"] }
 [badges]
 travis-ci = { repository = "pubnub/rust", branch = "master" }
 maintenance = { status = "actively-developed" }
+
+[features]
+default = ["mock"]
+mock = ["pubnub-core/mockall"]
