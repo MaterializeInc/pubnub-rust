@@ -42,7 +42,7 @@ fn format_plain_message(request: Request<'_>) -> String {
 type HmacSha256 = Hmac<Sha256>;
 
 fn encrypt(secret: &str, plain_message: &str) -> [u8; 32] {
-    let mut mac = HmacSha256::new_varkey(secret.as_bytes()).expect("HMAC can take key of any size");
+    let mut mac = HmacSha256::new_from_slice(secret.as_bytes()).expect("HMAC can take key of any size");
     mac.update(plain_message.as_bytes());
     let code = mac.finalize().into_bytes();
     code.into()
