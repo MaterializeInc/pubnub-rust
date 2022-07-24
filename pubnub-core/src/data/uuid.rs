@@ -29,7 +29,7 @@ impl From<&str> for UUID {
 
 impl From<uuid::Uuid> for UUID {
     fn from(value: uuid::Uuid) -> Self {
-        Self(value.to_hyphenated().to_string())
+        Self(value.hyphenated().to_string())
     }
 }
 
